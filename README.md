@@ -237,8 +237,5 @@ The project lives across a few public surfaces:
 ---
 
 <p align="center">
-  Made with 💜 by <strong>ΛLΞX JΛMΞS ᗪEV</strong>
-</p>
-<p align="center">
-<img width="460" height="460" alt="1000163669" src="https://github.com/user-attachments/assets/fcb2a751-393f-4460-87a7-3b770dae75ae" />
+  Made with 💜 by <strong>RookieZ</strong>
 </p>
