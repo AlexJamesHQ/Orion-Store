@@ -1,0 +1,104 @@
+apply plugin: 'com.android.application'
+
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+android {
+    namespace "com.orion.store"
+    compileSdk rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "com.orion.store"
+        minSdkVersion 24
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 15
+        versionName "1.5.5"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        aaptOptions {
+             // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
+             // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
+            ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
+        }
+    }
+    signingConfigs {
+        release {
+            if (keystorePropertiesFile.exists()) {
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig keystorePropertiesFile.exists() ? signingConfigs.release : signingConfigs.debug
+
+            // Enable R8 full mode optimizations (more aggressive than ProGuard compatibility)
+            // This inlines methods, removes unused branches, and optimizes bytecode.
+            // Already the default with AGP 8+, but explicit for clarity.
+        }
+        debug {
+            // Disable R8 for debug builds — faster iteration
+            minifyEnabled false
+            shrinkResources false
+        }
+    }
+    compileOptions {
+        // Capacitor 7+ requires Java 21
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
+    }
+
+    // ── Build-level performance flags ────────────────────────────────
+    // Disable PNG crunching — our PNGs are already optimized. Saves
+    // ~30% of build time and avoids re-compressing lossy artifacts.
+    aaptOptions {
+        cruncherEnabled = false
+    }
+
+    // Enable BuildConfig generation with debug flag for conditional logging
+    buildFeatures {
+        buildConfig = true
+    }
+}
+
+repositories {
+    flatDir{
+        dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
+    implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    implementation project(':capacitor-android')
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
+    implementation project(':capacitor-cordova-android-plugins')
+
+    // Shizuku API
+    def shizuku_version = "13.1.5"
+    implementation "dev.rikka.shizuku:api:$shizuku_version"
+    implementation "dev.rikka.shizuku:provider:$shizuku_version"
+}
+
+apply from: 'capacitor.build.gradle'
+
+try {
+    def servicesJSON = file('google-services.json')
+    if (servicesJSON.text) {
+        apply plugin: 'com.google.gms.google-services'
+    }
+} catch(Exception e) {
+    logger.info("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
+}

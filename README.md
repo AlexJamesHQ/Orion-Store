@@ -11,15 +11,15 @@
 </p>
 
 <p align="center">
-  A transparent app store built around public releases, inspectable metadata, and automation you can actually follow.
+  A transparent app store built around public releases, inspectable metadata, and automation you can actually follow.<br>
+  <strong>Now fully native.</strong>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React">
-  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
-  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
-  <img src="https://img.shields.io/badge/Capacitor-119EFF?style=for-the-badge&logo=capacitor&logoColor=white" alt="Capacitor">
-  <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind">
+  <img src="https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin">
+  <img src="https://img.shields.io/badge/Jetpack_Compose-4285F4?style=for-the-badge&logo=jetpackcompose&logoColor=white" alt="Jetpack Compose">
+  <img src="https://img.shields.io/badge/Material_3_Expressive-6750A4?style=for-the-badge&logo=materialdesign&logoColor=white" alt="Material 3 Expressive">
+  <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android">
 </p>
 
 <p align="center">
@@ -39,6 +39,9 @@
   <a href="https://github.com/RookieEnough/Orion-Store/releases">
     <img src="https://img.shields.io/github/downloads/RookieEnough/Orion-Store/total?style=for-the-badge&logo=cloud&label=Downloads&color=10b981" alt="Total Downloads">
   </a>
+  <a href="https://orionstore.pages.dev">
+    <img src="https://img.shields.io/badge/Website-orionstore.pages.dev-6366f1?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Website">
+  </a>
 </p>
 
 <p align="center">
@@ -53,6 +56,12 @@
 <a href="https://trendshift.io/repositories/15654?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-15654" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/trendshift/repositories/15654/daily?language=TypeScript" alt="RookieEnough%2FOrion-Store | Trendshift" width="250" height="55"/></a>
 </p>
 
+## Orion Store 2.0 · Native at last :rocket:
+
+Orion Store has been **rebuilt from the ground up as a native Android app**. The web app has been rewritten in Kotlin and Jetpack Compose on **Material 3 Expressive**, with spring motion, shape morphing, a new storefront and features that were never possible before. Updating from 1.x is a normal install over the old app, and your profile, XP, badges, favorites and settings come along.
+
+Read the full [2.0.0 release notes](RELEASE_NOTES_2.0.0.md).
+
 ## Overview :milky_way:
 
 Orion Store is an Android-first store client that leans on public sources instead of hiding everything behind a private service layer. The app pulls catalog data from public JSON, resolves releases from GitHub, GitLab, and Codeberg, and keeps the delivery path understandable enough that users can see where things come from and how updates are discovered.
@@ -63,19 +72,18 @@ This repository is the client application itself. The live catalog, configuratio
 
 At a glance:
 
-- Public JSON catalog with inspectable configuration  
+- Public JSON catalog with inspectable configuration
 - Multi-source releases (GitHub, GitLab, Codeberg)
-- Android-native install, update, and security tooling
+- Native install, update, and security tooling
+- Skip Android's 24-hour unverified-app wait with built-in wireless install
 
 ## What makes Orion different :sparkles:
 
 The point of Orion is not to pretend infrastructure does not exist. It is to reduce hidden infrastructure and move as much of the important behavior as possible into public, inspectable layers. Catalog entries are plain data. Release sources stay visible. Automation is handled through workflows and workers that can be reviewed, rather than through a black-box backend that users have to trust on faith.
 
-That design carries through the app. Orion tracks installed packages, surfaces updates, manages download state, supports install flows on Android, and exposes developer-facing diagnostics for people who want to see what the store is actually doing under the hood.
+That design carries through the app. Orion tracks installed packages, surfaces updates, manages download state, installs natively, and exposes developer-facing diagnostics for people who want to see what the store is actually doing under the hood.
 
-## Feature atlas :rocket:
-
-Rather than treating Orion like a download button with a search bar, the app is built as a complete release-aware client. The best way to explain it is to show the major capabilities as systems, not as a long checklist.
+## Feature atlas :compass:
 
 <p align="center">
   <img src="assets/features-pill.svg" width="520" alt="Orion Store features">
@@ -86,72 +94,74 @@ Rather than treating Orion like a download button with a search bar, the app is 
     <td width="50%" valign="top">
       <img src="assets/feature-release.svg" width="55" alt="Release intelligence icon"><br>
       <strong>Release intelligence</strong><br>
-      Orion reads public metadata, resolves upstream releases, and keeps source provenance visible instead of burying it behind a store-owned backend.<br><br>
-      <code>Public JSON</code> <code>Mirrors</code> <code>Multi-source parsing</code>
+      Orion reads public metadata, resolves upstream releases, and keeps source provenance visible instead of burying it behind a store-owned backend. It reads your device architecture and recommends the right APK.<br><br>
+      <code>Public JSON</code> <code>Mirrors</code> <code>Multi-source parsing</code> <code>ABI detection</code>
     </td>
     <td width="50%" valign="top">
       <img src="assets/feature-update.svg" width="55" alt="Update center icon"><br>
       <strong>Update center</strong><br>
-      Installed packages are tracked locally, update availability is surfaced clearly, and queued downloads stay organized instead of disappearing into the background.<br><br>
-      <code>Installed version checks</code> <code>Queue state</code> <code>Ready-to-install</code>
+      A native download engine with live notifications, a persistent queue, batch updates, and per-app ignore rules you can undo from My Apps.<br><br>
+      <code>Foreground downloads</code> <code>Queue</code> <code>Ignored updates</code>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
       <img src="assets/feature-install.svg" width="55" alt="Native install flow icon"><br>
       <strong>Native install flow</strong><br>
-      Orion is not limited to web-only behavior. On Android it can hand off installs natively and support faster one-tap workflows through Shizuku for users who want that path.<br><br>
-      <code>Capacitor bridge</code> <code>Install handoff</code> <code>Shizuku option</code>
+      System installer, a specific installer, Shizuku silent installs, or the built-in <strong>wireless ADB</strong> installer that skips Android's 24-hour wait for unverified apps. Set it up once through a guided notification.<br><br>
+      <code>Wireless ADB</code> <code>Shizuku</code> <code>Installer choice</code>
     </td>
     <td width="50%" valign="top">
       <img src="assets/feature-sentinel.svg" width="55" alt="Sentinel security icon"><br>
       <strong>Sentinel security</strong><br>
-      Security tooling is built into the product rather than stapled on as an afterthought, with rapid scans, deeper file analysis, and signature-driven checks for risky packages and APKs.<br><br>
-      <code>Rapid scan</code> <code>Deep scan</code> <code>Threat shards</code>
+      Security tooling is built into the product: malware scans for installed apps and VirusTotal checks for any APK before it is installed.<br><br>
+      <code>Sentinel</code> <code>VirusTotal</code> <code>Threat database</code>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
       <img src="assets/feature-tools.svg" width="55" alt="Power tools icon"><br>
-      <strong>Power tools</strong><br>
-      Beyond installation, Orion includes utility workflows for APK extraction, package inspection, and system app controls for users who need more than a simple storefront.<br><br>
-      <code>APK extraction</code> <code>Package detective</code> <code>System app tools</code>
+      <strong>Guardian power tools</strong><br>
+      Revoke risky permissions, pull the APK out of any app, and remove or restore system apps without root, rated by the Universal Android Debloater database.<br><br>
+      <code>Permissions</code> <code>APK extraction</code> <code>Debloater</code>
     </td>
     <td width="50%" valign="top">
       <img src="assets/feature-dev.svg" width="55" alt="Developer visibility icon"><br>
       <strong>Developer visibility</strong><br>
-      Orion exposes the guts of the system when needed: mirror source, cache state, GitHub API quota, source switching, and debugging surfaces that make failures easier to understand.<br><br>
+      Mirror source, cache state, GitHub API quota, package detective, raw metadata explorer and source switching, all in Settings › Developer.<br><br>
       <code>Developer mode</code> <code>Diagnostics</code> <code>Metadata inspection</code>
     </td>
   </tr>
 </table>
 
-## Source support :satellite:
+### And a lot more
 
-Orion treats multiple upstream platforms as first-class citizens, which matters because app distribution should not depend on a single forge being the only path worth supporting.
+- **Material 3 Expressive design:** expressive springs, shape morphs, wavy progress, icon hand-off animations, and Material You colors.
+- **A real level system:** every ad, download, submission and Dino Run earns XP. Pilot cards turn Bronze, Silver and Gold, and you can flip yours to sign it.
+- **Fuel the Code:** a story-driven support quest, now in Chapter 2 · The Forkening, with bosses and badges to earn.
+- **Community:** submit apps straight from a GitHub, GitLab or Codeberg repo, build custom bundles, and climb the leaderboard.
+- **Personalization:** light, dark, dusk and OLED themes, custom fonts, pixel pull-to-refresh characters, layouts and visible tabs.
 
-- `GitHub` is the primary release path and the center of most automation.
-- `GitLab` is supported for repository metadata and raw release sourcing.
-- `Codeberg` is supported as a real upstream, not a decorative fallback.
-
-## Screenshots / UI preview :framed_picture:
-
-The app leans into a compact, card-driven interface with a dark shell, loud accents, and clear state changes for downloads, updates, and tools. Here is the actual gallery from the project assets:
+## Screenshots :framed_picture:
 
 <table>
   <tr>
-    <td width="20%" align="center"><img src="https://github.com/RookieEnough/Orion-Store/blob/main/assets/screenshot%201.jpg?raw=true" alt="Orion Store screenshot 1" width="100%"></td>
-    <td width="20%" align="center"><img src="https://github.com/RookieEnough/Orion-Store/blob/main/assets/screenshot%202.jpg?raw=true" alt="Orion Store screenshot 2" width="100%"></td>
-    <td width="20%" align="center"><img src="https://github.com/RookieEnough/Orion-Store/blob/main/assets/screenshot%203.jpg?raw=true" alt="Orion Store screenshot 3" width="100%"></td>
-    <td width="20%" align="center"><img src="https://github.com/RookieEnough/Orion-Store/blob/main/assets/screenshot%204.jpg?raw=true" alt="Orion Store screenshot 4" width="100%"></td>
-    <td width="20%" align="center"><img src="https://github.com/RookieEnough/Orion-Store/blob/main/assets/screenshot%205.jpg?raw=true" alt="Orion Store screenshot 5" width="100%"></td>
+    <td width="25%" align="center"><img src="assets/screenshots/home.jpg" alt="Storefront" width="100%"><br><sub>Storefront</sub></td>
+    <td width="25%" align="center"><img src="assets/screenshots/detail.jpg" alt="App details" width="100%"><br><sub>App details</sub></td>
+    <td width="25%" align="center"><img src="assets/screenshots/myapps.jpg" alt="My Apps" width="100%"><br><sub>My Apps</sub></td>
+    <td width="25%" align="center"><img src="assets/screenshots/xtra.jpg" alt="Orion Xtra" width="100%"><br><sub>Orion Xtra</sub></td>
   </tr>
   <tr>
-    <td width="20%" align="center"><img src="https://github.com/RookieEnough/Orion-Store/blob/main/assets/screenshot%206.jpg?raw=true" alt="Orion Store screenshot 6" width="100%"></td>
-    <td width="20%" align="center"><img src="https://github.com/RookieEnough/Orion-Store/blob/main/assets/screenshot%207.jpg?raw=true" alt="Orion Store screenshot 7" width="100%"></td>
-    <td width="20%" align="center"><img src="https://github.com/RookieEnough/Orion-Store/blob/main/assets/screenshot%208.jpg?raw=true" alt="Orion Store screenshot 8" width="100%"></td>
-    <td width="20%" align="center"><img src="https://github.com/RookieEnough/Orion-Store/blob/main/assets/screenshot%209.jpg?raw=true" alt="Orion Store screenshot 9" width="100%"></td>
-    <td width="20%" align="center"><img src="https://github.com/RookieEnough/Orion-Store/blob/main/assets/screenshot%2010.jpg?raw=true" alt="Orion Store screenshot 10" width="100%"></td>
+    <td width="25%" align="center"><img src="assets/screenshots/profile.jpg" alt="Pilot profile" width="100%"><br><sub>Pilot profile</sub></td>
+    <td width="25%" align="center"><img src="assets/screenshots/badges.jpg" alt="Badge archive" width="100%"><br><sub>Badge archive</sub></td>
+    <td width="25%" align="center"><img src="assets/screenshots/quest.jpg" alt="Fuel the Code" width="100%"><br><sub>Fuel the Code</sub></td>
+    <td width="25%" align="center"><img src="assets/screenshots/about.jpg" alt="About" width="100%"><br><sub>About</sub></td>
+  </tr>
+  <tr>
+    <td width="25%" align="center"><img src="assets/screenshots/settings.jpg" alt="Settings" width="100%"><br><sub>Settings</sub></td>
+    <td width="25%" align="center"><img src="assets/screenshots/welcome.jpg" alt="Welcome to 2.0" width="100%"><br><sub>Welcome to 2.0</sub></td>
+    <td width="25%" align="center"><img src="assets/screenshots/dark.jpg" alt="Dark theme" width="100%"><br><sub>Dark theme</sub></td>
+    <td width="25%" align="center"><img src="assets/screenshots/pc.jpg" alt="PC catalog" width="100%"><br><sub>PC catalog</sub></td>
   </tr>
 </table>
 
@@ -171,14 +181,12 @@ If you are a developer, you can promote that your application is hosted on Orion
 
 ### How to Get Your Badge Integration Link:
 1. **Submit Your App**: Submit your application to the Orion Store via this client or our repository submission form.
-2. **Enable Developer Mode**: Once approved and live in the store, open Orion Store, go to the header settings (or tap the **"Orion Store"** header 8 times) to unlock Developer Mode.
-3. **Copy Integration Code**: Go to your app's detail view, scroll down to the **Developer Deep Links** section, and click to expand it. From there, copy the **Markdown Badge** for your repository's README or the **HTML Badge** code for your website.
+2. **Enable Developer Mode**: Once approved and live in the store, open Orion Store and tap the **Orion Store** title in the header 7 times to unlock Developer Mode.
+3. **Copy Integration Code**: Open your app's detail page, expand **Developer Deep Links**, and copy the **Markdown Badge** for your repository's README or the **HTML Badge** for your website.
 
-## How the project is structured :compass:
+## How the project is structured :card_file_box:
 
-The application is built with React, TypeScript, Vite, Tailwind CSS, and Capacitor 7. The main app shell lives in `App.tsx`, the UI is split across `components/`, persistent client state is managed in `store/`, Android-native functionality is bridged through `plugins/AppTracker.ts`, and heavier background work is pushed into `workers/` for release aggregation, relay logic, image handling, and Sentinel support.
-
-The repository also includes a bundled `apps.json` fallback so the client can still run with local data when needed. In normal operation, though, Orion is designed to consume public remote data and public release metadata rather than rely on a private API server.
+Orion Store 2.0 is a single-activity Jetpack Compose app in MVVM style. A tour of the code lives in [ARCHITECTURE.md](ARCHITECTURE.md).
 
 <table>
   <tr>
@@ -186,55 +194,64 @@ The repository also includes a bundled `apps.json` fallback so the client can st
     <td><strong>Responsibility</strong></td>
   </tr>
   <tr>
-    <td><code>App.tsx</code></td>
-    <td>Application shell, data loading, update orchestration, and navigation</td>
+    <td><code>app/src/main/java/com/orion/store/ui/</code></td>
+    <td>Compose screens, the theme and motion system, and <code>MainViewModel</code>, which orchestrates loading, downloads, installs and overlays</td>
   </tr>
   <tr>
-    <td><code>components/</code></td>
-    <td>Storefront UI, app detail flows, settings, modal surfaces, and submission screens</td>
+    <td><code>app/src/main/java/com/orion/store/data/</code></td>
+    <td>Catalog processing, persisted settings and data stores, version logic, XP and levels</td>
   </tr>
   <tr>
-    <td><code>store/</code></td>
-    <td>Zustand state for settings, downloads, installs, persistence, and local identity</td>
+    <td><code>app/src/main/java/com/orion/store/platform/</code></td>
+    <td>Package tracking, the download service, Shizuku and wireless ADB installs, VirusTotal, and the 1.x data carry-over</td>
   </tr>
   <tr>
-    <td><code>plugins/</code></td>
-    <td>Android-native bridge for package inspection, downloads, installation, scanning, and file actions</td>
+    <td><code>tools/</code></td>
+    <td>Generators for the Material Symbols icon set and the color schemes</td>
   </tr>
   <tr>
-    <td><code>workers/</code></td>
-    <td>Release resolution, Sentinel logic, relay workflows, image handling, and delta aggregation</td>
+    <td><code>Orion Legacy/</code></td>
+    <td>The original React + Capacitor web app (1.x), kept for reference and for the web build</td>
   </tr>
 </table>
 
-## Local development :hammer_and_wrench:
+## Building :hammer_and_wrench:
 
-For day-to-day UI work, the web build is enough:
+You need **JDK 21** (the JetBrains Runtime bundled with Android Studio works) and the Android SDK.
 
 ```bash
+./gradlew :app:assembleDebug          # debug APK
+./gradlew :app:testDebugUnitTest      # logic tests
+```
+
+Release builds read the signing key from a local `keystore.properties` (never committed):
+
+```properties
+storeFile=/path/to/your.keystore
+keyAlias=your-alias
+storePassword=...
+keyPassword=...
+```
+
+```bash
+./gradlew :app:assembleRelease
+```
+
+Or open the project folder in Android Studio and run the `app` configuration on a device.
+
+### Legacy web app
+
+The 1.x web app lives in [`Orion Legacy/`](Orion%20Legacy) and still builds as before:
+
+```bash
+cd "Orion Legacy"
 npm install
 npm run dev
 ```
 
-If you want a production build or a quick type check, use:
-
-```bash
-npm run build
-npm run lint
-```
-
-Android-specific features such as package detection, native downloads, installation handoff, Shizuku integration, and most of the security tooling depend on the Capacitor plugin and only work in the Android shell. To run that version, build the web assets and sync the native project:
-
-```bash
-npm run build
-npx cap sync android
-```
-
-After that, open `android/` in Android Studio and run the app on a device.
-
 ## Data, workers, and automation :robot:
 
-Orion is best understood as backend-light rather than backend-free. The catalog and remote configuration are public, but the project still uses a few narrow pieces of infrastructure where they make sense. This repo includes Cloudflare worker code for things like leaderboard relay, image proxying, delta aggregation, submission handling, and Sentinel support. The automation story continues in `.github/workflows/`, where mirrors, submissions, leaderboard processing, deployment, and threat updates are handled through GitHub Actions.
+Orion is best understood as backend-light rather than backend-free. The catalog and remote configuration are public, but the project still uses a few narrow pieces of infrastructure where they make sense: Cloudflare worker code for leaderboard relay, image proxying, delta aggregation, submission handling and Sentinel support lives in `Orion Legacy/workers/`, and automation runs through GitHub Actions here and in Orion-Data.
 
 That split is intentional. The app stays focused on the client, while the data and automation layers remain separately inspectable.
 
@@ -242,12 +259,13 @@ That split is intentional. The app stays focused on the client, while the data a
 
 Contributions are welcome, especially in the areas that matter most to a store client: installer reliability, release resolution, UI polish, Android behavior, security tooling, and documentation. If you are changing catalog entries or store metadata, that work usually belongs in the data repository or the submission flow rather than in this client codebase.
 
-If you want to understand the moving parts before opening a change, start with `App.tsx`, `plugins/AppTracker.ts`, `workers/core.worker.ts`, and the workflow files under `.github/workflows/`. That path gives a good overview of how the store loads data, resolves releases, and automates maintenance.
+Start with [ARCHITECTURE.md](ARCHITECTURE.md), then `ui/MainViewModel.kt`, `data/CatalogProcessor.kt` and `platform/AppTracker.kt` for how the store loads data, resolves releases and installs apps.
 
 ## Community :speech_balloon:
 
 The project lives across a few public surfaces:
 
+- `Website`: [orionstore.pages.dev](https://orionstore.pages.dev)
 - `Orion-Data`: [github.com/RookieEnough/Orion-Data](https://github.com/RookieEnough/Orion-Data)
 - `Discord`: [discord.com/invite/CrM6y4ujnq](https://discord.com/invite/CrM6y4ujnq)
 - `Ko-fi`: [ko-fi.com/rookie_z](https://ko-fi.com/rookie_z)
