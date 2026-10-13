@@ -146,22 +146,22 @@ That design carries through the app. Orion tracks installed packages, surfaces u
 
 <table>
   <tr>
-    <td width="25%" align="center"><img src="assets/screenshots/home.jpg" alt="Storefront" width="100%"><br><sub>Storefront</sub></td>
-    <td width="25%" align="center"><img src="assets/screenshots/detail.jpg" alt="App details" width="100%"><br><sub>App details</sub></td>
-    <td width="25%" align="center"><img src="assets/screenshots/myapps.jpg" alt="My Apps" width="100%"><br><sub>My Apps</sub></td>
-    <td width="25%" align="center"><img src="assets/screenshots/xtra.jpg" alt="Orion Xtra" width="100%"><br><sub>Orion Xtra</sub></td>
+    <td width="25%" align="center"><img src="assets/screenshots/home.jpg?v=2" alt="Storefront" width="100%"><br><sub>Storefront</sub></td>
+    <td width="25%" align="center"><img src="assets/screenshots/detail.jpg?v=2" alt="App details" width="100%"><br><sub>App details</sub></td>
+    <td width="25%" align="center"><img src="assets/screenshots/myapps.jpg?v=2" alt="My Apps" width="100%"><br><sub>My Apps</sub></td>
+    <td width="25%" align="center"><img src="assets/screenshots/xtra.jpg?v=2" alt="Orion Xtra" width="100%"><br><sub>Orion Xtra</sub></td>
   </tr>
   <tr>
-    <td width="25%" align="center"><img src="assets/screenshots/profile.jpg" alt="Pilot profile" width="100%"><br><sub>Pilot profile</sub></td>
-    <td width="25%" align="center"><img src="assets/screenshots/badges.jpg" alt="Badge archive" width="100%"><br><sub>Badge archive</sub></td>
-    <td width="25%" align="center"><img src="assets/screenshots/quest.jpg" alt="Fuel the Code" width="100%"><br><sub>Fuel the Code</sub></td>
-    <td width="25%" align="center"><img src="assets/screenshots/about.jpg" alt="About" width="100%"><br><sub>About</sub></td>
+    <td width="25%" align="center"><img src="assets/screenshots/profile.jpg?v=2" alt="Pilot profile" width="100%"><br><sub>Pilot profile</sub></td>
+    <td width="25%" align="center"><img src="assets/screenshots/badges.jpg?v=2" alt="Badge archive" width="100%"><br><sub>Badge archive</sub></td>
+    <td width="25%" align="center"><img src="assets/screenshots/quest.jpg?v=2" alt="Fuel the Code" width="100%"><br><sub>Fuel the Code</sub></td>
+    <td width="25%" align="center"><img src="assets/screenshots/about.jpg?v=2" alt="About" width="100%"><br><sub>About</sub></td>
   </tr>
   <tr>
-    <td width="25%" align="center"><img src="assets/screenshots/settings.jpg" alt="Settings" width="100%"><br><sub>Settings</sub></td>
-    <td width="25%" align="center"><img src="assets/screenshots/welcome.jpg" alt="Welcome to 2.0" width="100%"><br><sub>Welcome to 2.0</sub></td>
-    <td width="25%" align="center"><img src="assets/screenshots/dark.jpg" alt="Dark theme" width="100%"><br><sub>Dark theme</sub></td>
-    <td width="25%" align="center"><img src="assets/screenshots/pc.jpg" alt="PC catalog" width="100%"><br><sub>PC catalog</sub></td>
+    <td width="25%" align="center"><img src="assets/screenshots/settings.jpg?v=2" alt="Settings" width="100%"><br><sub>Settings</sub></td>
+    <td width="25%" align="center"><img src="assets/screenshots/welcome.jpg?v=2" alt="Welcome to 2.0" width="100%"><br><sub>Welcome to 2.0</sub></td>
+    <td width="25%" align="center"><img src="assets/screenshots/dark.jpg?v=2" alt="Dark theme" width="100%"><br><sub>Dark theme</sub></td>
+    <td width="25%" align="center"><img src="assets/screenshots/pc.jpg?v=2" alt="PC catalog" width="100%"><br><sub>PC catalog</sub></td>
   </tr>
 </table>
 
