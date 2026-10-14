@@ -115,7 +115,15 @@ object CatalogProcessor {
             else -> null
         }
         val clean = url.replace(REPO_HOST, "").removeSuffix("/").removeSuffix(".git").removeSuffix("/").lowercase()
-        val releases = key?.let { mirror[it.lowercase()] } ?: mirror[clean] ?: return app
+        val bareGithub = app.githubRepo?.lowercase()
+        val bareGitlab = app.gitlabRepo?.lowercase()
+        val bareCodeberg = app.codebergRepo?.lowercase()
+        val releases = key?.let { mirror[it.lowercase()] }
+            ?: mirror[clean]
+            ?: bareGithub?.let { mirror[it] }
+            ?: bareGitlab?.let { mirror[it] }
+            ?: bareCodeberg?.let { mirror[it] }
+            ?: return app
         val kw = app.releaseKeyword?.lowercase()?.ifEmpty { null }
         val now = Instant.now().toString()
         val versions = releases.mapNotNull { r ->

@@ -15,8 +15,8 @@ android {
         applicationId = "com.orion.store"
         minSdk = 24
         targetSdk = 36
-        versionCode = 20
-        versionName = "2.0.0"
+        versionCode = 25
+        versionName = "2.0.5"
     }
     signingConfigs {
         if (keystore != null) create("release") {

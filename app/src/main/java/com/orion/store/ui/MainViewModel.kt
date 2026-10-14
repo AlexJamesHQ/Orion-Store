@@ -317,8 +317,16 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     private suspend fun process(raw: JsonElement?, mirror: JsonElement?) {
+        val m = withContext(Dispatchers.Default) { CatalogProcessor.parseMirror(mirror) }
+        // If the mirror fetch failed (empty) but we already have processed apps with
+        // download info, keep them. Overwriting with unprocessed data would mark the
+        // entire catalog unavailable and poison the disk cache.
+        if (m.isEmpty() && d.apps.any { it.availableVersions.isNotEmpty() }) {
+            loading = false; refreshing = false; scheduleInstalledSync()
+            return
+        }
         val imported = d.importedApps
-        val (apps, imp) = withContext(Dispatchers.Default) { val m = CatalogProcessor.parseMirror(mirror); CatalogProcessor.process(raw, m) to imported.map { CatalogProcessor.processItem(it, m) } }
+        val (apps, imp) = withContext(Dispatchers.Default) { CatalogProcessor.process(raw, m) to imported.map { CatalogProcessor.processItem(it, m) } }
         upd { it.copy(apps = apps, importedApps = imp) }
         loading = false; refreshing = false; scheduleInstalledSync()
     }
