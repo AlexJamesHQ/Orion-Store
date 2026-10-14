@@ -183,7 +183,11 @@ data class ReleaseNote(val version: String, val date: String, val title: String,
 private val NOTE_LABELS = setOf("NEW", "FIX", "IMP", "TWEAK", "HOT", "SEC")
 private fun note(v: String, d: String, t: String, vararg i: Pair<String, String>) = ReleaseNote(v, d, t, i.toList())
 private val DEFAULT_NOTES = listOf(
-    note("v2.0.0", "Current", "Orion-RE: Native at Last",
+    note("v2.0.5", "Current", "Hotfix: Unavailable Apps",
+        "FIX" to "Fixed apps incorrectly showing as Currently unavailable due to a mirror key mismatch for GitHub repositories.",
+        "FIX" to "Fixed the entire catalog going blank when the mirror download fails. The app now keeps your working data instead of overwriting it.",
+        "IMP" to "Added fallback matching for app repositories to make download detection more reliable."),
+    note("v2.0.0", "Previous", "Orion-RE: Native at Last",
         "NEW" to "Rebuilt from the web app into a fully native Jetpack Compose app with Material 3 Expressive.", "NEW" to "Skip the 24-hour wait with built-in wireless install, no Shizuku needed.",
         "NEW" to "Fuel the Code Chapter 2 · The Forkening, with three new bosses and badges.", "NEW" to "Real XP levels with Bronze, Silver and Gold pilot cards you can flip and sign.",
         "IMP" to "Your profile, badges and settings carry over from the web version automatically."),

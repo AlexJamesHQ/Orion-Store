@@ -47,7 +47,7 @@ import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.serialization.json.JsonElement
 import java.io.File
 
-const val STORE_VERSION = "2.0.0"
+const val STORE_VERSION = "2.0.5"
 
 enum class H { LIGHT, MEDIUM, HEAVY, SELECTION, SUCCESS, WARNING, ERROR }
 private val HAPTICS = mapOf(
